@@ -12,4 +12,6 @@ import retrofit2.http.GET;
 public interface MarvelApiService {
     @GET("/comics")
     Single<GetComicsResponse> getComics();
+
+
 }
