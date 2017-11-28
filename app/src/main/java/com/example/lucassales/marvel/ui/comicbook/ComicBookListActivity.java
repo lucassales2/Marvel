@@ -36,7 +36,6 @@ public class ComicBookListActivity extends BaseActivity implements ComicBookList
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         adapter.setListener(this);
-
     }
 
     @Override

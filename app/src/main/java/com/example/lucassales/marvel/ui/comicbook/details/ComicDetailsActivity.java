@@ -2,12 +2,18 @@ package com.example.lucassales.marvel.ui.comicbook.details;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.Html;
+import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.lucassales.marvel.R;
 import com.example.lucassales.marvel.data.network.dto.Comic;
 import com.example.lucassales.marvel.ui.base.BaseActivity;
@@ -33,6 +39,9 @@ public class ComicDetailsActivity extends BaseActivity implements ComicDetailsIV
     AppCompatTextView textViewPageCount;
     @BindView(R.id.textViewPrice)
     AppCompatTextView textViewPrice;
+    @BindView(R.id.linearLayout)
+    LinearLayout linearLayout;
+
 
     public static Intent getStartIntent(Context context, int comicId) {
         return new Intent(context, ComicDetailsActivity.class)
@@ -58,11 +67,20 @@ public class ComicDetailsActivity extends BaseActivity implements ComicDetailsIV
     @Override
     public void onComicBookLoaded(Comic comic) {
         Glide.with(this)
+                .asBitmap()
                 .load(comic.getThumbnail().getPath() + "." + comic.getThumbnail().getExtension())
-                .into(imageViewComic);
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                        imageViewComic.setImageBitmap(resource);
+                        Palette palette = new Palette.Builder(resource).generate();
+                        int defaultC = ContextCompat.getColor(ComicDetailsActivity.this, R.color.colorPrimary);
+                        int color = palette.getVibrantColor(defaultC); //always ok
+                        linearLayout.setBackgroundColor(color);
+                    }
+                });
         textViewTitle.setText(comic.getTitle());
-        if (comic.getDescription() != null)
-            textViewDescription.setText(Html.fromHtml(comic.getDescription()));
+        textViewDescription.setText(comic.getDescription() != null ? Html.fromHtml(comic.getDescription()) : "No description available");
         textViewPageCount.setText(comic.getPageCount());
         textViewPrice.setText(comic.getPrices().get(0).getPrice());
     }

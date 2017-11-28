@@ -33,7 +33,7 @@ ext {
     buildToolsVersion = '27.0.0'
 
     // App dependencies
-    supportLibraryVersion = '27.0.1'
+    supportLibraryVersion = '27.0.2'
     gsonVersion = '2.8.2'
     glideVersion = '4.1.1'
 
