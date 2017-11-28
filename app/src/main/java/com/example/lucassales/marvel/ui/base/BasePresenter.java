@@ -29,8 +29,12 @@ public class BasePresenter<V extends IView> implements IPresenter<V> {
 
     @Override
     public void onDetach() {
-        view = null;
         compositeDisposable.dispose();
+        view = null;
+    }
+
+    protected V getView() {
+        return view;
     }
 
     protected boolean isViewAttached() {

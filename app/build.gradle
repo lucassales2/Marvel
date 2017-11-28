@@ -61,7 +61,6 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
 
-
     // reactive
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
@@ -74,4 +73,8 @@ dependencies {
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+
+    // View bind
+    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
 }

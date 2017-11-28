@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.lucassales.marvel.data.db.DbManager;
 import com.example.lucassales.marvel.data.network.ApiManager;
 import com.example.lucassales.marvel.data.network.dto.Comic;
+import com.example.lucassales.marvel.data.network.response.GetComicByIdResponse;
 import com.example.lucassales.marvel.data.network.response.GetComicsResponse;
 import com.example.lucassales.marvel.inject.ApplicationContext;
 
@@ -52,5 +53,10 @@ public class DataManagerImpl implements DataManager {
     @Override
     public Single<GetComicsResponse> getComicBooks() {
         return apiManager.getComicBooks();
+    }
+
+    @Override
+    public Single<GetComicByIdResponse> getComicById(int comicId) {
+        return apiManager.getComicById(comicId);
     }
 }

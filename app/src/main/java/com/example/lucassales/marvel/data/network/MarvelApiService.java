@@ -1,9 +1,11 @@
 package com.example.lucassales.marvel.data.network;
 
+import com.example.lucassales.marvel.data.network.response.GetComicByIdResponse;
 import com.example.lucassales.marvel.data.network.response.GetComicsResponse;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -12,7 +14,18 @@ import retrofit2.http.Query;
 
 public interface MarvelApiService {
     @GET("comics")
-    Single<GetComicsResponse> getComics(@Query("apikey") String apikey, @Query("hash") String hash, @Query("ts") long timeStamp);
+    Single<GetComicsResponse> getComics(
+            @Query("apikey") String apikey,
+            @Query("hash") String hash,
+            @Query("ts") long timeStamp,
+            @Query("limit") int limit
+    );
 
-
+    @GET("comics/{comicId}")
+    Single<GetComicByIdResponse> getComicById(
+            @Path("comicId") int comicId,
+            @Query("apikey") String apikey,
+            @Query("hash") String hash,
+            @Query("ts") long timeStamp
+    );
 }

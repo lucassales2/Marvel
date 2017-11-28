@@ -23,19 +23,21 @@ public class ComicBookListPresenter<V extends ComicBookListIView> extends BasePr
 
     @Override
     public void start() {
-        getDataManager().getComicBooks()
+        getCompositeDisposable().add(getDataManager().getComicBooks()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<GetComicsResponse>() {
                     @Override
                     public void accept(GetComicsResponse getComicsResponse) throws Exception {
-
+                        if (isViewAttached()) {
+                            getView().onComicBooksLoaded(getComicsResponse.getData().getResults());
+                        }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
                     }
-                });
+                }));
     }
 }

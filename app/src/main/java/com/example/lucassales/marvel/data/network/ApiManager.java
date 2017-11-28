@@ -1,5 +1,6 @@
 package com.example.lucassales.marvel.data.network;
 
+import com.example.lucassales.marvel.data.network.response.GetComicByIdResponse;
 import com.example.lucassales.marvel.data.network.response.GetComicsResponse;
 
 import io.reactivex.Single;
@@ -11,4 +12,6 @@ import io.reactivex.Single;
 public interface ApiManager {
 
     Single<GetComicsResponse> getComicBooks();
+
+    Single<GetComicByIdResponse> getComicById(int comicId);
 }

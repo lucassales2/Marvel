@@ -49,5 +49,4 @@ ext {
     espressoVersion = '2.2.2'
     mockitoVersion = '2.7.1'
 
-    leakcanaryVersion = '1.5.4'
 }

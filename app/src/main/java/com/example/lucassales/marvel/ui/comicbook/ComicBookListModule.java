@@ -15,4 +15,9 @@ public class ComicBookListModule {
             ComicBookListPresenter<ComicBookListIView> presenter) {
         return presenter;
     }
+
+    @Provides
+    ComicBookListAdapter provideComicBookListAdapter() {
+        return new ComicBookListAdapter();
+    }
 }

@@ -3,6 +3,7 @@
     package="com.example.lucassales.marvel">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MarvelApplication"
         android:allowBackup="true"
@@ -18,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.comicbook.ComicBookListActivity"></activity>
+        <activity android:name=".ui.comicbook.ComicBookListActivity" />
+        <activity android:name=".ui.comicbook.details.ComicDetailsActivity"></activity>
     </application>
-
 
 </manifest>
