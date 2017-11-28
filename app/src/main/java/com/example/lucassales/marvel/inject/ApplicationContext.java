@@ -1,4 +1,4 @@
-package com.example.lucassales.marvel.di;
+package com.example.lucassales.marvel.inject;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

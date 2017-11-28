@@ -1,4 +1,4 @@
-package com.example.lucassales.marvel.di.module;
+package com.example.lucassales.marvel.inject;
 
 import com.example.lucassales.marvel.BuildConfig;
 import com.example.lucassales.marvel.data.network.MarvelApiService;
@@ -23,7 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkModule {
 
     private static final String BASE_URL = "baseUrl";
-
+    public static final String PUBLIC_KEY = "publicKey";
+    public static final String PRIVATE_KEY = "privateKey";
     @Provides
     @Named(BASE_URL)
     String provideBaseUrl() {
@@ -38,7 +39,21 @@ public class NetworkModule {
     @Provides
     @Singleton
     Gson provideGson() {
-        return new GsonBuilder().create();
+        return new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
+    }
+
+    @Provides
+    @Named(PUBLIC_KEY)
+    String providePublicKey() {
+        return BuildConfig.PUBLIC_KEY;
+    }
+
+    @Provides
+    @Named(PRIVATE_KEY)
+    String providePrivateKey() {
+        return BuildConfig.PRIVATE_KEY;
     }
 
     @Provides

@@ -1,24 +1,26 @@
 package com.example.lucassales.marvel.util;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Created by lucassales on 27/11/2017.
  */
 
 public class Security {
 
-    public static String generateMD5Hash(String arg) {
+    public static String MD5(String md5) {
         try {
-            return new String(MessageDigest.getInstance("MD5").digest(arg.getBytes()));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return "";
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte anArray : array) {
+                sb.append(Integer.toHexString((anArray & 0xFF) | 0x100).substring(1, 3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
         }
+        return null;
     }
 
     public static String generateHash(String privateKey, String publicKey, long timestamp) {
-        return generateMD5Hash(String.valueOf(timestamp) + privateKey + publicKey);
+        return MD5(String.valueOf(timestamp) + privateKey + publicKey);
     }
 }

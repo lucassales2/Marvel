@@ -1,6 +1,7 @@
 
-package com.example.lucassales.marvel.data.network.dto;
+package com.example.lucassales.marvel.data.network.response;
 
+import com.example.lucassales.marvel.data.network.dto.Data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

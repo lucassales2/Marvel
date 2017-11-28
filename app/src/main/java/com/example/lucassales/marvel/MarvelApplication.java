@@ -1,5 +1,8 @@
 package com.example.lucassales.marvel;
 
+
+import com.example.lucassales.marvel.inject.DaggerApplicationComponent;
+
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 
@@ -10,7 +13,15 @@ import dagger.android.DaggerApplication;
 public class MarvelApplication extends DaggerApplication {
 
     @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        return null;
+    public void onCreate() {
+        super.onCreate();
+
     }
+
+    @Override
+    protected AndroidInjector<MarvelApplication> applicationInjector() {
+        return DaggerApplicationComponent.builder()
+                .create(this);
+    }
+
 }
