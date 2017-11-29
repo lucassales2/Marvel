@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.lucassales.marvel.R;
 import com.example.lucassales.marvel.data.network.dto.Comic;
@@ -22,6 +23,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ComicBookListActivity extends BaseActivity implements ComicBookListIView, ComicBookListAdapter.OnComicClickListener {
 
@@ -31,6 +33,11 @@ public class ComicBookListActivity extends BaseActivity implements ComicBookList
     ComicBookListAdapter adapter;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @OnClick(R.id.button)
+    void onButtonClick(View view) {
+        presenter.calculateWithBudget(10f);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,11 @@ public class ComicBookListActivity extends BaseActivity implements ComicBookList
     @Override
     public void onComicBooksLoaded(List<Comic> results) {
         adapter.update(results);
+    }
+
+    @Override
+    public void onBudgetCalculated(int comicsToBeBought) {
+        Toast.makeText(this, getString(R.string.comics_to_be_bought, comicsToBeBought), Toast.LENGTH_SHORT).show();
     }
 
     @Override

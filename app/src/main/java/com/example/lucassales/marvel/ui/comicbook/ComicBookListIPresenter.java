@@ -8,4 +8,6 @@ import com.example.lucassales.marvel.ui.base.IPresenter;
 
 public interface ComicBookListIPresenter <V extends ComicBookListIView> extends IPresenter<V> {
     void start();
+
+    void calculateWithBudget(float budget);
 }

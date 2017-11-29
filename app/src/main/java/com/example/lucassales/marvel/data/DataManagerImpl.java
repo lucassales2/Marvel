@@ -6,6 +6,7 @@ import com.example.lucassales.marvel.data.db.DbManager;
 import com.example.lucassales.marvel.data.network.ApiManager;
 import com.example.lucassales.marvel.data.network.dto.Comic;
 import com.example.lucassales.marvel.data.network.response.GetComicByIdResponse;
+import com.example.lucassales.marvel.data.network.response.GetComicCreatorsResponse;
 import com.example.lucassales.marvel.data.network.response.GetComicsResponse;
 import com.example.lucassales.marvel.inject.ApplicationContext;
 
@@ -58,5 +59,10 @@ public class DataManagerImpl implements DataManager {
     @Override
     public Single<GetComicByIdResponse> getComicById(int comicId) {
         return apiManager.getComicById(comicId);
+    }
+
+    @Override
+    public Single<GetComicCreatorsResponse> getCreatorsByComicId(int comicId) {
+        return apiManager.getCreatorsByComicId(comicId);
     }
 }

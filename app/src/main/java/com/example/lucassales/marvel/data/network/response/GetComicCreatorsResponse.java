@@ -5,7 +5,7 @@ import com.example.lucassales.marvel.data.network.dto.ComicData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetComicByIdResponse {
+public class GetComicCreatorsResponse {
 
     @SerializedName("code")
     @Expose

@@ -1,6 +1,7 @@
 package com.example.lucassales.marvel.data.network;
 
 import com.example.lucassales.marvel.data.network.response.GetComicByIdResponse;
+import com.example.lucassales.marvel.data.network.response.GetComicCreatorsResponse;
 import com.example.lucassales.marvel.data.network.response.GetComicsResponse;
 import com.example.lucassales.marvel.inject.NetworkModule;
 import com.example.lucassales.marvel.util.Security;
@@ -50,9 +51,31 @@ public class ApiManagerImpl implements ApiManager {
                     @Override
                     public SingleSource<GetComicByIdResponse> apply(Integer integer) throws Exception {
                         long timeMillis = System.currentTimeMillis();
-                        return apiService.getComicById(integer, publicKey, Security.generateHash(privateKey, publicKey, timeMillis), timeMillis);
+                        return apiService.getComicById(
+                                integer,
+                                publicKey,
+                                Security.generateHash(privateKey, publicKey, timeMillis),
+                                timeMillis
+                        );
                     }
                 });
 
+    }
+
+    @Override
+    public Single<GetComicCreatorsResponse> getCreatorsByComicId(int comicId) {
+        return Single.just(comicId)
+                .flatMap(new Function<Integer, SingleSource<GetComicCreatorsResponse>>() {
+                    @Override
+                    public SingleSource<GetComicCreatorsResponse> apply(Integer integer) throws Exception {
+                        long timeMillis = System.currentTimeMillis();
+                        return apiService.getCreatorsByComicById(
+                                integer,
+                                publicKey,
+                                Security.generateHash(privateKey, publicKey, timeMillis),
+                                timeMillis
+                        );
+                    }
+                });
     }
 }

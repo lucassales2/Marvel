@@ -30,7 +30,7 @@ public class ComicBookListPresenter<V extends ComicBookListIView> extends BasePr
                     @Override
                     public void accept(GetComicsResponse getComicsResponse) throws Exception {
                         if (isViewAttached()) {
-                            getView().onComicBooksLoaded(getComicsResponse.getData().getResults());
+                            getIView().onComicBooksLoaded(getComicsResponse.getData().getResults());
                         }
                     }
                 }, new Consumer<Throwable>() {
@@ -39,5 +39,10 @@ public class ComicBookListPresenter<V extends ComicBookListIView> extends BasePr
 
                     }
                 }));
+    }
+
+    @Override
+    public void calculateWithBudget(float budget) {
+
     }
 }

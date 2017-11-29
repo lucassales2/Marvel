@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface ComicBookListIView extends IView {
     void onComicBooksLoaded(List<Comic> results);
+
+    void onBudgetCalculated(int comicsToBeBought);
 }

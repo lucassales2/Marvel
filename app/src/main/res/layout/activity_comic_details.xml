@@ -17,6 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:minHeight="@dimen/max_thumbnail_size"
+            android:minWidth="@dimen/max_thumbnail_size"
             android:padding="@dimen/default_padding"
             android:textSize="@dimen/text_size_large"
             android:transitionName="title" />
@@ -51,10 +53,12 @@
             android:padding="@dimen/default_padding"
             android:textSize="@dimen/text_size_medium" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewCreators"
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textViewCreators"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_medium" />
 
     </LinearLayout>
 

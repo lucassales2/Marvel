@@ -1,11 +1,12 @@
 
 package com.example.lucassales.marvel.data.network.dto;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Creators {
+import java.util.List;
+
+public class CreatorsData {
 
     @SerializedName("available")
     @Expose

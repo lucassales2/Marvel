@@ -8,16 +8,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.lucassales.marvel.R;
-import com.example.lucassales.marvel.data.network.dto.Comic;
-import com.example.lucassales.marvel.data.network.dto.Image;
 import com.example.lucassales.marvel.ui.base.BaseActivity;
 
 import javax.inject.Inject;
@@ -43,8 +39,8 @@ public class ComicDetailsActivity extends BaseActivity implements ComicDetailsIV
     AppCompatTextView textViewPrice;
     @BindView(R.id.rootView)
     View rootView;
-    @BindView(R.id.recyclerViewCreators)
-    RecyclerView recyclerViewCreators;
+    @BindView(R.id.textViewCreators)
+    AppCompatTextView textViewCreators;
 
 
     public static Intent getStartIntent(Context context, int comicId) {
@@ -69,16 +65,10 @@ public class ComicDetailsActivity extends BaseActivity implements ComicDetailsIV
     }
 
     @Override
-    public void onComicBookLoaded(Comic comic) {
-        Image image;
-        if (comic.getImages().isEmpty()) {
-            image = comic.getThumbnail();
-        } else {
-            image = comic.getImages().get(0);
-        }
+    public void onImageLoaded(String imageUrl) {
         Glide.with(this)
                 .asBitmap()
-                .load(image.getPath() + "." + image.getExtension())
+                .load(imageUrl)
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
@@ -89,11 +79,30 @@ public class ComicDetailsActivity extends BaseActivity implements ComicDetailsIV
                         rootView.setBackgroundColor(color);
                     }
                 });
-        textViewTitle.setText(comic.getTitle());
-        textViewDescription.setText(comic.getDescription() != null ?
-                Html.fromHtml(comic.getDescription()) :
-                "No description available");
-        textViewPageCount.setText(comic.getPageCount());
-        textViewPrice.setText(comic.getPrices().get(0).getPrice());
+    }
+
+    @Override
+    public void onTitleLoaded(String title) {
+        textViewTitle.setText(title);
+    }
+
+    @Override
+    public void onDescriptionLoaded(CharSequence charSequence) {
+        textViewDescription.setText(getString(R.string.description, charSequence));
+    }
+
+    @Override
+    public void onPageCountLoaded(String pageCount) {
+        textViewPageCount.setText(getString(R.string.page_count, pageCount));
+    }
+
+    @Override
+    public void onPriceLoaded(String type, String price) {
+        textViewPrice.setText(getString(R.string.price, type, price));
+    }
+
+    @Override
+    public void onCreatorsLoaded(String creators) {
+        textViewCreators.setText(getString(R.string.creators, creators));
     }
 }

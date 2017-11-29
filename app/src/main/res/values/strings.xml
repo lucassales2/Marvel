@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Marvel</string>
+    <string name="description">Description: %s</string>
+    <string name="page_count">Pages: %s</string>
+    <string name="price" formatted="false">Price: %s%s</string>
+    <string name="creators">Creators: %s</string>
+    <string name="comics_to_be_bought">You can buy %d comics with this budget</string>
+    <string name="calculate_budget">Calculate Budget!</string>
 </resources>

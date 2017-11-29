@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Data {
+public class ComicData {
 
     @SerializedName("offset")
     @Expose
@@ -22,7 +22,7 @@ public class Data {
     private String count;
     @SerializedName("results")
     @Expose
-    private List<Creator> results = null;
+    private List<Comic> results = null;
 
     public String getOffset() {
         return offset;
@@ -56,11 +56,11 @@ public class Data {
         this.count = count;
     }
 
-    public List<Creator> getResults() {
+    public List<Comic> getResults() {
         return results;
     }
 
-    public void setResults(List<Creator> results) {
+    public void setResults(List<Comic> results) {
         this.results = results;
     }
 

@@ -14,7 +14,7 @@ public class BasePresenter<V extends IView> implements IPresenter<V> {
 
     private final DataManager dataManager;
     private final CompositeDisposable compositeDisposable;
-    private V view;
+    private V iView;
 
     @Inject
     public BasePresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
@@ -24,21 +24,21 @@ public class BasePresenter<V extends IView> implements IPresenter<V> {
 
     @Override
     public void onAttach(V view) {
-        this.view = view;
+        this.iView = view;
     }
 
     @Override
     public void onDetach() {
         compositeDisposable.dispose();
-        view = null;
+        iView = null;
     }
 
-    protected V getView() {
-        return view;
+    protected V getIView() {
+        return iView;
     }
 
     protected boolean isViewAttached() {
-        return view != null;
+        return iView != null;
     }
 
     protected DataManager getDataManager() {

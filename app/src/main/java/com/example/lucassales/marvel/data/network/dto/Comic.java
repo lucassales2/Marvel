@@ -84,7 +84,7 @@ public class Comic {
     private List<Image> images = null;
     @SerializedName("creators")
     @Expose
-    private Creators creators;
+    private CreatorsData creators;
     @SerializedName("characters")
     @Expose
     private Characters characters;
@@ -295,11 +295,11 @@ public class Comic {
         this.images = images;
     }
 
-    public Creators getCreators() {
+    public CreatorsData getCreators() {
         return creators;
     }
 
-    public void setCreators(Creators creators) {
+    public void setCreators(CreatorsData creators) {
         this.creators = creators;
     }
 

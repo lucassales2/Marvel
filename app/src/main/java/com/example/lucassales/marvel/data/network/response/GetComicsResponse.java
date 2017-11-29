@@ -1,7 +1,7 @@
 
 package com.example.lucassales.marvel.data.network.response;
 
-import com.example.lucassales.marvel.data.network.dto.Data;
+import com.example.lucassales.marvel.data.network.dto.ComicData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,7 +24,7 @@ public class GetComicsResponse {
     private String attributionHTML;
     @SerializedName("data")
     @Expose
-    private Data data;
+    private ComicData data;
     @SerializedName("etag")
     @Expose
     private String etag;
@@ -69,11 +69,11 @@ public class GetComicsResponse {
         this.attributionHTML = attributionHTML;
     }
 
-    public Data getData() {
+    public ComicData getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(ComicData data) {
         this.data = data;
     }
 

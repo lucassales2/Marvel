@@ -1,6 +1,5 @@
 package com.example.lucassales.marvel.ui.comicbook.details;
 
-import com.example.lucassales.marvel.data.network.dto.Comic;
 import com.example.lucassales.marvel.ui.base.IView;
 
 /**
@@ -8,5 +7,16 @@ import com.example.lucassales.marvel.ui.base.IView;
  */
 
 public interface ComicDetailsIView extends IView {
-    void onComicBookLoaded(Comic comic);
+
+    void onImageLoaded(String imageUrl);
+
+    void onTitleLoaded(String title);
+
+    void onDescriptionLoaded(CharSequence charSequence);
+
+    void onPageCountLoaded(String pageCount);
+
+    void onPriceLoaded(String type, String price);
+
+    void onCreatorsLoaded(String creators);
 }
