@@ -1,5 +1,8 @@
 package com.example.lucassales.marvel.ui.comicbook;
 
+import android.graphics.Bitmap;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.lucassales.marvel.R;
 import com.example.lucassales.marvel.data.network.dto.Comic;
 
@@ -31,11 +36,21 @@ public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         Comic comic = comics.get(position);
         Glide.with(holder.imageView)
+                .asBitmap()
                 .load(String.format("%s.%s", comic.getThumbnail().getPath(), comic.getThumbnail().getExtension()))
-                .into(holder.imageView);
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                        Palette palette = new Palette.Builder(resource).generate();
+                        int color = palette.getLightMutedColor(
+                                ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimary));
+                        holder.imageView.setImageBitmap(resource);
+                        holder.itemView.setBackgroundColor(color);
+                    }
+                });
         holder.textView.setText(comic.getTitle());
     }
 
@@ -55,7 +70,7 @@ public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdap
     }
 
     public interface OnComicClickListener {
-        void onComicClick(Comic comic);
+        void onComicClick(Comic comic, AppCompatTextView textView, AppCompatImageView imageView);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -71,7 +86,7 @@ public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdap
                 @Override
                 public void onClick(View view) {
                     if (listener != null && listener.get() != null) {
-                        listener.get().onComicClick(comics.get(getLayoutPosition()));
+                        listener.get().onComicClick(comics.get(getLayoutPosition()), textView, imageView);
                     }
                 }
             });

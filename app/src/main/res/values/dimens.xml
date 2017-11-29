@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="thumbnail_size">96dp</dimen>
+    <dimen name="max_thumbnail_size">100dp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="default_padding">6dp</dimen>
+    <dimen name="text_size_medium">15sp</dimen>
+    <dimen name="default_margin">16dp</dimen>
 </resources>

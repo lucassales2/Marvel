@@ -1,9 +1,9 @@
-
 package com.example.lucassales.marvel.data.network.dto;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class Comic {
 
@@ -63,13 +63,13 @@ public class Comic {
     private Series series;
     @SerializedName("variants")
     @Expose
-    private List<Variant> variants = null;
+    private List<ResourceUri> variants = null;
     @SerializedName("collections")
     @Expose
-    private List<Collection> collections = null;
+    private List<ResourceUri> collections = null;
     @SerializedName("collectedIssues")
     @Expose
-    private List<CollectedIssue> collectedIssues = null;
+    private List<ResourceUri> collectedIssues = null;
     @SerializedName("dates")
     @Expose
     private List<Date> dates = null;
@@ -78,7 +78,7 @@ public class Comic {
     private List<Price> prices = null;
     @SerializedName("thumbnail")
     @Expose
-    private Thumbnail thumbnail;
+    private Image thumbnail;
     @SerializedName("images")
     @Expose
     private List<Image> images = null;
@@ -239,27 +239,27 @@ public class Comic {
         this.series = series;
     }
 
-    public List<Variant> getVariants() {
+    public List<ResourceUri> getVariants() {
         return variants;
     }
 
-    public void setVariants(List<Variant> variants) {
+    public void setVariants(List<ResourceUri> variants) {
         this.variants = variants;
     }
 
-    public List<Collection> getCollections() {
+    public List<ResourceUri> getCollections() {
         return collections;
     }
 
-    public void setCollections(List<Collection> collections) {
+    public void setCollections(List<ResourceUri> collections) {
         this.collections = collections;
     }
 
-    public List<CollectedIssue> getCollectedIssues() {
+    public List<ResourceUri> getCollectedIssues() {
         return collectedIssues;
     }
 
-    public void setCollectedIssues(List<CollectedIssue> collectedIssues) {
+    public void setCollectedIssues(List<ResourceUri> collectedIssues) {
         this.collectedIssues = collectedIssues;
     }
 
@@ -279,11 +279,11 @@ public class Comic {
         this.prices = prices;
     }
 
-    public Thumbnail getThumbnail() {
+    public Image getThumbnail() {
         return thumbnail;
     }
 
-    public void setThumbnail(Thumbnail thumbnail) {
+    public void setThumbnail(Image thumbnail) {
         this.thumbnail = thumbnail;
     }
 

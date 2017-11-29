@@ -1,8 +1,15 @@
 package com.example.lucassales.marvel.ui.comicbook;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
+import android.view.View;
 
 import com.example.lucassales.marvel.R;
 import com.example.lucassales.marvel.data.network.dto.Comic;
@@ -50,7 +57,16 @@ public class ComicBookListActivity extends BaseActivity implements ComicBookList
     }
 
     @Override
-    public void onComicClick(Comic comic) {
-        startActivity(ComicDetailsActivity.getStartIntent(this, Integer.valueOf(comic.getId())));
+    public void onComicClick(Comic comic, AppCompatTextView textView, AppCompatImageView imageView) {
+        Intent intent = ComicDetailsActivity.getStartIntent(this, Integer.valueOf(comic.getId()));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this, new Pair<View, String>(textView, "title"),
+                    new Pair<View, String>(imageView, "image"));
+            startActivity(intent, activityOptions.toBundle());
+        } else {
+            startActivity(intent);
+        }
+
     }
 }

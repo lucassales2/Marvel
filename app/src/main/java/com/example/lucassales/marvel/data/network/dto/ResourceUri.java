@@ -4,7 +4,7 @@ package com.example.lucassales.marvel.data.network.dto;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CollectedIssue {
+public class ResourceUri {
 
     @SerializedName("resourceURI")
     @Expose

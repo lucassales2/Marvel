@@ -2,6 +2,7 @@
 
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.lucassales.marvel.ui.comicbook.details.ComicDetailsActivity">
@@ -9,33 +10,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout"
         android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/imageViewComic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_large"
+            android:transitionName="title" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageViewComic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:transitionName="image" />
+
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textViewDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_medium" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textViewPageCount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_medium" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textViewPrice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_medium" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewCreators"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
