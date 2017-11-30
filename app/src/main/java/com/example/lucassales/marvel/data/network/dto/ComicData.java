@@ -22,7 +22,7 @@ public class ComicData {
     private String count;
     @SerializedName("results")
     @Expose
-    private List<Comic> results = null;
+    private List<ComicDTO> results = null;
 
     public String getOffset() {
         return offset;
@@ -56,11 +56,11 @@ public class ComicData {
         this.count = count;
     }
 
-    public List<Comic> getResults() {
+    public List<ComicDTO> getResults() {
         return results;
     }
 
-    public void setResults(List<Comic> results) {
+    public void setResults(List<ComicDTO> results) {
         this.results = results;
     }
 

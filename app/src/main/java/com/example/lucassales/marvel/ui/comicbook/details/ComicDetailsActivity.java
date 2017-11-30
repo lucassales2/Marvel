@@ -97,8 +97,8 @@ public class ComicDetailsActivity extends BaseActivity implements ComicDetailsIV
     }
 
     @Override
-    public void onPriceLoaded(String type, String price) {
-        textViewPrice.setText(getString(R.string.price, type, price));
+    public void onPriceLoaded(String price) {
+        textViewPrice.setText(getString(R.string.price, "$", price));
     }
 
     @Override

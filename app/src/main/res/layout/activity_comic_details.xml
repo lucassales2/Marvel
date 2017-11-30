@@ -5,6 +5,7 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="root"
     tools:context="com.example.lucassales.marvel.ui.comicbook.details.ComicDetailsActivity">
 
     <LinearLayout
@@ -17,8 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:minHeight="@dimen/max_thumbnail_size"
-            android:minWidth="@dimen/max_thumbnail_size"
             android:padding="@dimen/default_padding"
             android:textSize="@dimen/text_size_large"
             android:transitionName="title" />
@@ -29,6 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
+            android:minHeight="@dimen/min_detail_size"
+            android:minWidth="@dimen/min_detail_size"
             android:transitionName="image" />
 
 

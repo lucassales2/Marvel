@@ -3,8 +3,8 @@ package com.example.lucassales.marvel.data;
 import android.content.Context;
 
 import com.example.lucassales.marvel.data.db.DbManager;
+import com.example.lucassales.marvel.data.db.entity.Comic;
 import com.example.lucassales.marvel.data.network.ApiManager;
-import com.example.lucassales.marvel.data.network.dto.Comic;
 import com.example.lucassales.marvel.data.network.response.GetComicByIdResponse;
 import com.example.lucassales.marvel.data.network.response.GetComicCreatorsResponse;
 import com.example.lucassales.marvel.data.network.response.GetComicsResponse;
@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -37,18 +38,28 @@ public class DataManagerImpl implements DataManager {
     }
 
     @Override
-    public Flowable<List<Comic>> getAllComicBooks() {
-        return dbManager.getAllComicBooks();
+    public Flowable<List<Comic>> getAllComicBooksDB() {
+        return dbManager.getAllComicBooksDB();
     }
 
     @Override
-    public long insetComicBook(Comic comic) {
-        return dbManager.insetComicBook(comic);
+    public long insertComicBookDB(Comic comic) {
+        return dbManager.insertComicBookDB(comic);
     }
 
     @Override
-    public void bulkInsertComicBook(List<Comic> comics) {
-        dbManager.bulkInsertComicBook(comics);
+    public void bulkInsertComicBookDB(List<Comic> comics) {
+        dbManager.bulkInsertComicBookDB(comics);
+    }
+
+    @Override
+    public Flowable<Comic> getComicByIdDB(long id) {
+        return dbManager.getComicByIdDB(id);
+    }
+
+    @Override
+    public Maybe<List<Float>> getPricesDB() {
+        return dbManager.getPricesDB();
     }
 
     @Override

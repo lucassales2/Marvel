@@ -43,10 +43,9 @@ ext {
     rxandroidVersion = '2.0.1'
     butterKnifeVersion = '8.8.1'
     architectureComponentsVersion = '1.0.0'
-    rxbidingVersion = '2.0.0'
     retrofitVersion = '2.3.0'
     junitVersion = '4.12'
-    espressoVersion = '2.2.2'
-    mockitoVersion = '2.7.1'
+    espressoVersion = '3.0.1'
+    mockitoVersion = '2.12.0'
 
 }

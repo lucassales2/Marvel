@@ -1,5 +1,6 @@
 package com.example.lucassales.marvel.inject;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.example.lucassales.marvel.MarvelApplication;
@@ -7,17 +8,14 @@ import com.example.lucassales.marvel.data.DataManager;
 import com.example.lucassales.marvel.data.DataManagerImpl;
 import com.example.lucassales.marvel.data.db.DbManager;
 import com.example.lucassales.marvel.data.db.DbManagerImpl;
+import com.example.lucassales.marvel.data.db.MarvelRoomDatabase;
 import com.example.lucassales.marvel.data.network.ApiManager;
 import com.example.lucassales.marvel.data.network.ApiManagerImpl;
-import com.example.lucassales.marvel.ui.comicbook.ComicBookListIPresenter;
-import com.example.lucassales.marvel.ui.comicbook.ComicBookListIView;
-import com.example.lucassales.marvel.ui.comicbook.ComicBookListPresenter;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import dagger.android.ContributesAndroidInjector;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -53,6 +51,13 @@ public class ApplicationModule {
     @Provides
     DbManager provideDbManager(DbManagerImpl dbManager) {
         return dbManager;
+    }
+
+    @Provides
+    @Singleton
+    MarvelRoomDatabase provideHelpieDatabase(@ApplicationContext Context context) {
+        return Room.databaseBuilder(context, MarvelRoomDatabase.class, "com.example.lucassales.marvel.db")
+                .build();
     }
 
 }

@@ -16,7 +16,7 @@ public interface ComicDetailsIView extends IView {
 
     void onPageCountLoaded(String pageCount);
 
-    void onPriceLoaded(String type, String price);
+    void onPriceLoaded(String price);
 
     void onCreatorsLoaded(String creators);
 }

@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.lucassales.marvel.R;
-import com.example.lucassales.marvel.data.network.dto.Comic;
+import com.example.lucassales.marvel.data.db.entity.Comic;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.List;
 
 public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdapter.ViewHolder> {
 
-    private List<Comic> comics = new ArrayList<>();
+    private List<Comic> comics = new ArrayList<Comic>();
     private WeakReference<OnComicClickListener> listener;
 
     @Override
@@ -40,7 +40,7 @@ public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdap
         Comic comic = comics.get(position);
         Glide.with(holder.imageView)
                 .asBitmap()
-                .load(String.format("%s.%s", comic.getThumbnail().getPath(), comic.getThumbnail().getExtension()))
+                .load(comic.getImage())
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
@@ -70,7 +70,7 @@ public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdap
     }
 
     public interface OnComicClickListener {
-        void onComicClick(Comic comic, AppCompatTextView textView, AppCompatImageView imageView);
+        void onComicClick(Comic comic, AppCompatTextView textView, AppCompatImageView imageView, View itemView);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -78,7 +78,7 @@ public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdap
         final AppCompatTextView textView;
         final AppCompatImageView imageView;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.textView);
             imageView = itemView.findViewById(R.id.imageView);
@@ -86,7 +86,7 @@ public class ComicBookListAdapter extends RecyclerView.Adapter<ComicBookListAdap
                 @Override
                 public void onClick(View view) {
                     if (listener != null && listener.get() != null) {
-                        listener.get().onComicClick(comics.get(getLayoutPosition()), textView, imageView);
+                        listener.get().onComicClick(comics.get(getLayoutPosition()), textView, imageView, itemView);
                     }
                 }
             });

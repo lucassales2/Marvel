@@ -1,6 +1,6 @@
 package com.example.lucassales.marvel.ui.comicbook;
 
-import com.example.lucassales.marvel.data.network.dto.Comic;
+import com.example.lucassales.marvel.data.db.entity.Comic;
 import com.example.lucassales.marvel.ui.base.IView;
 
 import java.util.List;

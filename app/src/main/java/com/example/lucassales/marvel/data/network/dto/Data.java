@@ -22,7 +22,7 @@ public class Data {
     private String count;
     @SerializedName("results")
     @Expose
-    private List<Creator> results = null;
+    private List<CreatorDTO> results = null;
 
     public String getOffset() {
         return offset;
@@ -56,11 +56,11 @@ public class Data {
         this.count = count;
     }
 
-    public List<Creator> getResults() {
+    public List<CreatorDTO> getResults() {
         return results;
     }
 
-    public void setResults(List<Creator> results) {
+    public void setResults(List<CreatorDTO> results) {
         this.results = results;
     }
 
